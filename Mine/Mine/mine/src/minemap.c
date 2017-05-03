@@ -5,8 +5,13 @@ void MineMap_init(MineMap * map, int row, int col, int mine)
 	map->row = row > MAX_LEN ? (MAX_LEN) : row;
 	map->col = col > MAX_WID ? (MAX_LEN) : col;
 	map->mineNums = mine;
-	for (; mine; mine--) {
-		map->map[(int)(map->row * random())][(int)(map->col * random())] = BLOCK_MINE;
+	while (mine) {
+		int posX = (int)(map->row * random()) % map->row;
+		int posY = (int)(map->col * random()) % map->col;
+		if (map->map[posX][posY] != BLOCK_MINE) {
+			map->map[posX][posY] = BLOCK_MINE;
+			mine--;
+		}
 	}
 	for (int i = 0; i < map->row; i++) {
 		for (int j = 0; j < map->col; j++) {

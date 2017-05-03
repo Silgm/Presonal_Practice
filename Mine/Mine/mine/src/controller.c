@@ -1,11 +1,15 @@
 #include "../head/controller.h"
 
-ContolMessage GetKey(const MineMap * map) {
+ContolMessage GetContolMessage(const MineMap * map) {
 	static int posX = 0, posY = 0;
-	HANDLE hCmd = GetStdHandle(STD_OUTPUT_HANDLE);
-	COORD position;
+	//static char flag = 1;
+	//HANDLE hCmd = GetStdHandle(STD_OUTPUT_HANDLE);
+	//COORD position;
 	ContolMessage msg;
-
+	//if (flag) {
+	//	SetConsoleTitle(L"´ó¸çµÄÉ¨À×");
+	//	flag = 0;
+	//}
 #if _MSC_VER >= 1900
 	msg.key = _getch();
 #else
@@ -37,10 +41,10 @@ ContolMessage GetKey(const MineMap * map) {
 	msg.pos.x = posX;
 	msg.pos.y = posY;
 
-	position.X = msg.pos.y;
-	position.Y = msg.pos.x;
+	//position.X = 2*msg.pos.y;
+	//position.Y = msg.pos.x;
 
-	SetConsoleCursorPosition(hCmd, position);
+	//SetConsoleCursorPosition(hCmd, position);
 
 	return msg;
 }

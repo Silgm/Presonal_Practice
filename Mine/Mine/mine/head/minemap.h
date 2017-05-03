@@ -3,8 +3,7 @@
 
 #include "tool.h"
 
-#define MAX_LEN		127
-#define MAX_WID		127
+
 
 typedef enum _block {
 	BLOCK_0 = '0',

@@ -15,6 +15,6 @@
  *	@return 根据键盘那的按下的情况, 并返回控制消息块
 */
 /************************************************************************/
-ContolMessage GetKey(const MineMap * map);
+ContolMessage GetContolMessage(const MineMap * map);
 
 #endif // CONTROLLER_H_

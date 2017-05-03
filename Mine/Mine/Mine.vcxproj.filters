@@ -27,6 +27,15 @@
     <ClCompile Include="mine\src\minemap.c">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="mine\src\judge.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="mine\src\coordinate.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="mine\src\maskmap.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="mine\head\tool.h">
@@ -45,6 +54,15 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="main.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="mine\head\judgeMessage.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="mine\head\judge.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="mine\head\maskmap.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
