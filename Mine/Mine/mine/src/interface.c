@@ -2,11 +2,13 @@
 
 InterfaceMessage InterfaceMake(const MineMap * minemap, const MaskMap * maskmap, JudgeMessage jmsg, InterfaceData * _out_interfacedata) {
 	InterfaceMessage imsg;
+	
 	_out_interfacedata->row = minemap->row;
 	_out_interfacedata->col = minemap->col;
 
 	imsg.reflash = jmsg.refresh;
 	imsg.pos = jmsg.pos;
+	imsg.minenums = jmsg.minenums;
 	switch (jmsg.gameState)
 	{
 	case GAMESTATE_RUN:
@@ -43,16 +45,31 @@ InterfaceMessage InterfaceMake(const MineMap * minemap, const MaskMap * maskmap,
 		imsg.state = INTERFACE_STATE_END_FAIL;
 		for (int indexI = 0; indexI < minemap->row; indexI++) {
 			for (int indexJ = 0; indexJ < minemap->col; indexJ++) {
-				if (minemap->map[indexI][indexJ] == BLOCK_0) {
-					_out_interfacedata->interfaceMap[indexI][indexJ] = INTERFACE_BLOCK_0;
+				switch (maskmap->map[indexI][indexJ])
+				{
+				case MASKSTATE_INVISIBLE:
+					if (minemap->map[indexI][indexJ] != BLOCK_0)
+						_out_interfacedata->interfaceMap[indexI][indexJ] = minemap->map[indexI][indexJ];
+					else
+						_out_interfacedata->interfaceMap[indexI][indexJ] = INTERFACE_BLOCK_0;
+					break;
+				case MASKSTATE_VISUAL:
+					if (minemap->map[indexI][indexJ] == BLOCK_0) {
+						_out_interfacedata->interfaceMap[indexI][indexJ] = INTERFACE_BLOCK_0;
+					}
+					else if (minemap->map[indexI][indexJ] >= BLOCK_1 && minemap->map[indexI][indexJ] <= BLOCK_8) {
+						_out_interfacedata->interfaceMap[indexI][indexJ] = minemap->map[indexI][indexJ];
+					}
+					else if (minemap->map[indexI][indexJ] == BLOCK_MINE) {
+						_out_interfacedata->interfaceMap[indexI][indexJ] = INTERFACE_BLOCK_MINE;
+					}
+					break;
+				case MASKSTATE_FLAG:
+					_out_interfacedata->interfaceMap[indexI][indexJ] = INTERFACE_BLOCK_FLAG;
+					break;
+				default:
+					break;
 				}
-				else if (minemap->map[indexI][indexJ] >= BLOCK_1 && minemap->map[indexI][indexJ] <= BLOCK_8) {
-					_out_interfacedata->interfaceMap[indexI][indexJ] = minemap->map[indexI][indexJ];
-				}
-				else if (minemap->map[indexI][indexJ] == BLOCK_MINE) {
-					_out_interfacedata->interfaceMap[indexI][indexJ] = INTERFACE_BLOCK_MINE;
-				}
-				break;
 			}
 		}
 		break;
@@ -60,16 +77,28 @@ InterfaceMessage InterfaceMake(const MineMap * minemap, const MaskMap * maskmap,
 		imsg.state = INTERFACE_STATE_END_WIN;
 		for (int indexI = 0; indexI < minemap->row; indexI++) {
 			for (int indexJ = 0; indexJ < minemap->col; indexJ++) {
-				if (minemap->map[indexI][indexJ] == BLOCK_0) {
-					_out_interfacedata->interfaceMap[indexI][indexJ] = INTERFACE_BLOCK_0;
-				}
-				else if (minemap->map[indexI][indexJ] >= BLOCK_1 && minemap->map[indexI][indexJ] <= BLOCK_8) {
+				switch (maskmap->map[indexI][indexJ])
+				{
+				case MASKSTATE_INVISIBLE:
 					_out_interfacedata->interfaceMap[indexI][indexJ] = minemap->map[indexI][indexJ];
+					break;
+				case MASKSTATE_VISUAL:
+					if (minemap->map[indexI][indexJ] == BLOCK_0) {
+						_out_interfacedata->interfaceMap[indexI][indexJ] = INTERFACE_BLOCK_0;
+					}
+					else if (minemap->map[indexI][indexJ] >= BLOCK_1 && minemap->map[indexI][indexJ] <= BLOCK_8) {
+						_out_interfacedata->interfaceMap[indexI][indexJ] = minemap->map[indexI][indexJ];
+					}
+					else if (minemap->map[indexI][indexJ] == BLOCK_MINE) {
+						_out_interfacedata->interfaceMap[indexI][indexJ] = INTERFACE_BLOCK_MINE;
+					}
+					break;
+				case MASKSTATE_FLAG:
+					_out_interfacedata->interfaceMap[indexI][indexJ] = INTERFACE_BLOCK_FLAG;
+					break;
+				default:
+					break;
 				}
-				else if (minemap->map[indexI][indexJ] == BLOCK_MINE) {
-					_out_interfacedata->interfaceMap[indexI][indexJ] = INTERFACE_BLOCK_MINE;
-				}
-				break;
 			}
 		}
 		break;
@@ -78,3 +107,4 @@ InterfaceMessage InterfaceMake(const MineMap * minemap, const MaskMap * maskmap,
 	}
 	return imsg;
 }
+

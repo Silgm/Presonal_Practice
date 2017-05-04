@@ -19,6 +19,7 @@
 #include <stdint.h>
 #include <stdbool.h>
 #include <stddef.h>
+#include <locale.h>
 #include <wchar.h>
 #include <windows.h>
 

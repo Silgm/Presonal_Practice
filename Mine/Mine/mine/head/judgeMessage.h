@@ -15,6 +15,7 @@ typedef struct _judge_message{
 	GameState gameState; 
 	Coordinate pos;
 	bool refresh;
+	int minenums;
 }JudgeMessage;
 
 

@@ -39,5 +39,6 @@ typedef struct _interface_message {
 	InterfaceState state;
 	Coordinate pos;
 	bool reflash;
+	int minenums;
 }InterfaceMessage;
 #endif

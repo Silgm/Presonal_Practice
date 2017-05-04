@@ -13,10 +13,12 @@
 JudgeMessage Judge(const MineMap * map, MaskMap * maskmap, const ContolMessage cmsg)
 {
 	JudgeMessage jmsg;
-	static current_flag_num = 0;
+	static int current_flag_num = 0;
+	static int flagNums = 0;
 	jmsg.refresh = false;
 	jmsg.gameState = GAMESTATE_RUN;
 	jmsg.pos = cmsg.pos;
+	jmsg.minenums = map->mineNums - flagNums;
 	/*如果按下的是键盘X键, 且此时的maskmap位置是不可见的, 就执行分析操作, 否则就什么也不做*/
 	if (cmsg.key == KEY_X && maskmap->map[cmsg.pos.x][cmsg.pos.y] == MASKSTATE_INVISIBLE) {
 		jmsg.refresh = true;
@@ -77,20 +79,34 @@ JudgeMessage Judge(const MineMap * map, MaskMap * maskmap, const ContolMessage c
 		}
 	}/*如果按下的是z键, 意思是树立小红旗, */
 	else if (cmsg.key == KEY_Z) {
-
 		jmsg.refresh = true;
-
 		switch (maskmap->map[cmsg.pos.x][cmsg.pos.y])
 		{
 		case MASKSTATE_INVISIBLE:
 			maskmap->map[cmsg.pos.x][cmsg.pos.y] = MASKSTATE_FLAG;
+			if (map->map[cmsg.pos.x][cmsg.pos.y] == BLOCK_MINE) {
+				current_flag_num++;
+			}
+			flagNums++;
 			break;
 		case MASKSTATE_FLAG:
-			maskmap->map[cmsg.pos.x][cmsg.pos.x] = MASKSTATE_INVISIBLE;
+			maskmap->map[cmsg.pos.x][cmsg.pos.y] = MASKSTATE_INVISIBLE;
+			if (map->map[cmsg.pos.x][cmsg.pos.y] == BLOCK_MINE) {
+				current_flag_num--;
+			}
+			flagNums--;
 			break;
 		default:
 			break;
 		}
 	}
+
+	jmsg.minenums = map->mineNums - flagNums;
+
+	if (current_flag_num == map->mineNums && flagNums == current_flag_num) {
+		jmsg.gameState = GAMESTATE_WIN;
+	}
+
+
 	return jmsg;
 }

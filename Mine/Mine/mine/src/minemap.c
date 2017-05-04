@@ -36,7 +36,7 @@ void MineMap_init(MineMap * map, int row, int col, int mine)
 					cnt++;
 				if (j - 1 >= 0 && map->map[i][j - 1] == BLOCK_MINE)
 					cnt++;
-				if (i + 1 < map->row && j - 1 > 0 && map->map[i + 1][j - 1] == BLOCK_MINE)
+				if (i + 1 < map->row && j - 1 >= 0 && map->map[i + 1][j - 1] == BLOCK_MINE)
 					cnt++;
 				if (i - 1 >= 0 && map->map[i - 1][j] == BLOCK_MINE)
 					cnt++;
@@ -50,7 +50,6 @@ void MineMap_init(MineMap * map, int row, int col, int mine)
 					cnt++;
 
 				map->map[i][j] = BLOCK_0 + cnt;
-
 			}
 
 		}
