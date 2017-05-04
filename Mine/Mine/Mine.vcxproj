@@ -150,9 +150,11 @@
     <ClCompile Include="main.c" />
     <ClCompile Include="mine\src\controller.c" />
     <ClCompile Include="mine\src\coordinate.c" />
+    <ClCompile Include="mine\src\interface.c" />
     <ClCompile Include="mine\src\judge.c" />
     <ClCompile Include="mine\src\maskmap.c" />
     <ClCompile Include="mine\src\minemap.c" />
+    <ClCompile Include="mine\src\renderer.c" />
     <ClCompile Include="mine\src\tool.c" />
   </ItemGroup>
   <ItemGroup>
@@ -163,7 +165,9 @@
     <ClInclude Include="mine\head\judge.h" />
     <ClInclude Include="mine\head\judgeMessage.h" />
     <ClInclude Include="mine\head\maskmap.h" />
+    <ClInclude Include="mine\head\mineGameHead.h" />
     <ClInclude Include="mine\head\minemap.h" />
+    <ClInclude Include="mine\head\renderer.h" />
     <ClInclude Include="mine\head\tool.h" />
     <ClInclude Include="mine\head\controller.h" />
     <ClInclude Include="main.h" />

@@ -3,15 +3,26 @@
 int main() {
 	ContolMessage cmsg;
 	JudgeMessage jmsg;
+	InterfaceMessage imsg;
+	
 	MaskMap maskmap;
 	MineMap minemap;
+	InterfaceData infmap;
 
-	MineMap_init(&minemap, 10, 10, 10);
+	jmsg.gameState = GAMESTATE_RUN;
+	jmsg.refresh = true;
+	MineMap_init(&minemap, 22, 30, 99);
 	MaskMap_init(&maskmap, minemap.row, minemap.col);
+	imsg = InterfaceMake(&minemap, &maskmap, jmsg, &infmap);
+	Render(&infmap, imsg);
+
 	do {
 		cmsg = GetContolMessage(&minemap);/*控制器需要通过minemap的信息来控制, 光标的最大位置*/
 		jmsg = Judge(&minemap, &maskmap, cmsg);
+		imsg = InterfaceMake(&minemap, &maskmap, jmsg, &infmap);
+		Render(&infmap, imsg);
 	} while (cmsg.key != KEY_ESC);
+
 	return EXIT_SUCCESS;
 }
 

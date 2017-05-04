@@ -2,14 +2,16 @@
 
 ContolMessage GetContolMessage(const MineMap * map) {
 	static int posX = 0, posY = 0;
-	//static char flag = 1;
-	//HANDLE hCmd = GetStdHandle(STD_OUTPUT_HANDLE);
-	//COORD position;
+	static char flag = 1;
+	HANDLE hCmd = GetStdHandle(STD_OUTPUT_HANDLE);
+	COORD position;
 	ContolMessage msg;
-	//if (flag) {
-	//	SetConsoleTitle(L"大哥的扫雷");
-	//	flag = 0;
-	//}
+	
+	if (flag) {
+		SetConsoleTitle(L"大哥的扫雷");
+		flag = 0;
+	}
+	
 #if _MSC_VER >= 1900
 	msg.key = _getch();
 #else
@@ -41,10 +43,10 @@ ContolMessage GetContolMessage(const MineMap * map) {
 	msg.pos.x = posX;
 	msg.pos.y = posY;
 
-	//position.X = 2*msg.pos.y;
-	//position.Y = msg.pos.x;
+	position.X = 2*msg.pos.y;
+	position.Y = msg.pos.x;
 
-	//SetConsoleCursorPosition(hCmd, position);
+	SetConsoleCursorPosition(hCmd, position);
 
 	return msg;
 }
