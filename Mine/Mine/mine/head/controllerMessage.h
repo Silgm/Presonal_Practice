@@ -1,7 +1,6 @@
 #ifndef CONTROLLER_MESSAGE_H_
 #define CONTROLLER_MESSAGE_H_
 
-#include "tool.h"
 #include "coordinate.h"
 
 typedef enum _key {

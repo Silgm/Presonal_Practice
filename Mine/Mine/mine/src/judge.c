@@ -1,4 +1,14 @@
 #include "..\head\judge.h"
+/************************************************************************/
+/* 
+所有有关游戏逻辑的判断都交由裁判模块进行判定
+裁判模块接受来自控制模块产生的控制信息cmsg
+对cmsg进行解析, 获取玩家当前的按键信息, 和当前的光标位置
+并根据当前cmsg, 对游戏的地图, 状态进行更新.
+并把JudgeMessage传递出来, 待界面模块接收
+*/
+/************************************************************************/
+
 
 JudgeMessage Judge(const MineMap * map, MaskMap * maskmap, const ContolMessage cmsg)
 {
@@ -6,7 +16,7 @@ JudgeMessage Judge(const MineMap * map, MaskMap * maskmap, const ContolMessage c
 	static current_flag_num = 0;
 
 	jmsg.gameState = GAMESTATE_RUN;
-	/*如果按下的是键盘X键*/
+	/*如果按下的是键盘X键, 且此时的maskmap位置是不可见的, 就执行分析操作, 否则就什么也不做*/
 	if (cmsg.key == KEY_X && maskmap->map[cmsg.pos.x][cmsg.pos.y] == MASKSTATE_INVISIBLE) {
 		/*如果选中的是数字方框*/
 		if (map->map[cmsg.pos.x][cmsg.pos.y] > BLOCK_0 && map->map[cmsg.pos.x][cmsg.pos.y] <= BLOCK_8) {
@@ -60,7 +70,7 @@ JudgeMessage Judge(const MineMap * map, MaskMap * maskmap, const ContolMessage c
 			}
 			CoordinateQueue_free(&coordQueue);
 		}
-	}
+	}/*如果按下的是z键, 意思是树立小红旗, */
 	else if (cmsg.key == KEY_Z) {
 		switch (maskmap->map[cmsg.pos.x][cmsg.pos.y])
 		{

@@ -158,6 +158,8 @@
   <ItemGroup>
     <ClInclude Include="mine\head\controllerMessage.h" />
     <ClInclude Include="mine\head\coordinate.h" />
+    <ClInclude Include="mine\head\interface.h" />
+    <ClInclude Include="mine\head\interfaceMessage.h" />
     <ClInclude Include="mine\head\judge.h" />
     <ClInclude Include="mine\head\judgeMessage.h" />
     <ClInclude Include="mine\head\maskmap.h" />

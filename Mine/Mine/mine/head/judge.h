@@ -3,8 +3,7 @@
 
 #include "controllerMessage.h"
 #include "judgeMessage.h"
-#include "minemap.h"
-#include "maskmap.h"
+
 
 /************************************************************************/
 /* 

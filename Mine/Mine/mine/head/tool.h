@@ -8,7 +8,7 @@
 */
 /************************************************************************/
 
-
+/*sys lib*/
 #include <assert.h>
 #include <conio.h>
 #include <ctype.h>
@@ -21,6 +21,9 @@
 #include <stddef.h>
 #include <wchar.h>
 #include <windows.h>
+
+/*My Lib*/
+#include "cgds/cgds_queue.h"
 
 //地图最大长度(row)
 #define MAX_LEN		64

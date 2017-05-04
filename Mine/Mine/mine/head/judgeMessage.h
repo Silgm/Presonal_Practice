@@ -1,7 +1,9 @@
 #ifndef JUDGE_MESSAGE_H_
 #define JUDGE_MESSAGE_H_
 
-#include "tool.h"
+#include "minemap.h"
+#include "maskmap.h"
+
 typedef enum _GameState {
 	GAMESTATE_RUN		= 0,
 	GAMESTATE_WIN		= 1,
@@ -10,8 +12,6 @@ typedef enum _GameState {
 }GameState;
 
 typedef struct _judge_message{
-	int maskRow;
-	int maskCol;
 	GameState gameState;
 }JudgeMessage;
 

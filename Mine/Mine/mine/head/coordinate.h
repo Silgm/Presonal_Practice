@@ -1,8 +1,7 @@
 #ifndef COORDINATE_H_
 #define COORDINATE_H_
 
-#include "cgds/cgds_queue.h"
-
+#include "tool.h"
 
 
 typedef	struct _coordinate {

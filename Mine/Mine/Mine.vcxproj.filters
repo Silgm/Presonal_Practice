@@ -65,5 +65,11 @@
     <ClInclude Include="mine\head\maskmap.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="mine\head\interface.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="mine\head\interfaceMessage.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
