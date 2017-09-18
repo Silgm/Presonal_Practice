@@ -21,12 +21,39 @@
     <ClCompile Include="SnakeGame\src\SnakeGame.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="SnakeGame\src\GameObject.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="SnakeGame\src\GameElementObject.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="SnakeGame\src\ImagePoint.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="SnakeGame\src\GameSystemObject.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SnakeGame\head\SnakeGame.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="SnakeGame\head\SnakeGame_tool.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="SnakeGame\head\GameObject.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="SnakeGame\head\GameElementObject.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="SnakeGame\head\GameSystemObject.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="SnakeGame\head\SnakeGame_class.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="SnakeGame\head\ImagePoint.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

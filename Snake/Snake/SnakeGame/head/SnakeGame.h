@@ -2,7 +2,8 @@
 #define _SNAKEGAME_H_
 
 //! 所有游戏有关的类与函数全部在sg名字空间内, sg表示Sanke Game
-#include "SnakeGame_tool.h"
+//游戏本体的类
+#include "SnakeGame_class.h"
 
 
 namespace sg {

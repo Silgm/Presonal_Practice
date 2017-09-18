@@ -11,6 +11,6 @@
 
 //Windows api
 #include <windows.h>
-
+#include <conio.h>
 
 #endif

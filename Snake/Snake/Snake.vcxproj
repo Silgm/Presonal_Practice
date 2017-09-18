@@ -19,10 +19,19 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="SnakeGame\head\GameElementObject.h" />
+    <ClInclude Include="SnakeGame\head\GameObject.h" />
+    <ClInclude Include="SnakeGame\head\GameSystemObject.h" />
+    <ClInclude Include="SnakeGame\head\ImagePoint.h" />
     <ClInclude Include="SnakeGame\head\SnakeGame.h" />
+    <ClInclude Include="SnakeGame\head\SnakeGame_class.h" />
     <ClInclude Include="SnakeGame\head\SnakeGame_tool.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="SnakeGame\src\GameSystemObject.cpp" />
+    <ClCompile Include="SnakeGame\src\ImagePoint.cpp" />
+    <ClCompile Include="SnakeGame\src\GameElementObject.cpp" />
+    <ClCompile Include="SnakeGame\src\GameObject.cpp" />
     <ClCompile Include="SnakeGame\src\SnakeGame.cpp" />
     <ClCompile Include="SnakeGame\src\SnakeGameMain.cpp" />
   </ItemGroup>
