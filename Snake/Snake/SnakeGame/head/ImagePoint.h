@@ -14,7 +14,7 @@ namespace sg {
 		using TypeShape = CHAR;
 		using TypeColor = DWORD;
 
-		/*颜色枚举*/
+		//颜色枚举
 		enum Color {
 			COLOR_BLACK = 0,
 			COLOR_BLUE = 1,
