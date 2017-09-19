@@ -33,6 +33,9 @@
     <ClCompile Include="SnakeGame\src\GameSystemObject.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="SnakeGame\src\Snake.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SnakeGame\head\SnakeGame.h">
@@ -54,6 +57,9 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="SnakeGame\head\ImagePoint.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="SnakeGame\head\Snake.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

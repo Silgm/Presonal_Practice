@@ -6,6 +6,6 @@
 #include "GameElementObject.h"
 
 #include "ImagePoint.h"
-
+#include "Snake.h"
 
 #endif

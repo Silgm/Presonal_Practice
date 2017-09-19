@@ -3,9 +3,9 @@
 
 #include "GameElementObject.h"
 
-
 #define CIMAGEPOINT_DEFAULT_SHAPE		('*')
 #define CIMAGEPOINT_DEFAULT_COLOR		(COLOR_GRAY)
+
 namespace sg {
 
 	class CImagePoint : public CGameElementObject 
@@ -14,8 +14,8 @@ namespace sg {
 		using TypeShape = CHAR;
 		using TypeColor = DWORD;
 
-		//ÑÕÉ«Ã¶¾Ù
-		enum Color {
+		//Color enumerate
+		enum EnumColor {
 			COLOR_BLACK = 0,
 			COLOR_BLUE = 1,
 			COLOR_GREEN = 2,
@@ -34,7 +34,6 @@ namespace sg {
 			COLOR_BWHITE = 15
 		};
 
-		CImagePoint(TypeCoordinate x = 0, TypeCoordinate y = 0);
 		CImagePoint(TypeCoordinate x, TypeCoordinate y,
 			TypeShape shape = CIMAGEPOINT_DEFAULT_SHAPE,
 			TypeColor color = CIMAGEPOINT_DEFAULT_COLOR);
@@ -43,7 +42,7 @@ namespace sg {
 		CImagePoint::TypeColor getColor();
 
 		virtual ~CImagePoint();
-
+		
 	private:
 		TypeShape m_shape;
 		TypeColor m_color;
