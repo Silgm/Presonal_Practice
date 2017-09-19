@@ -12,7 +12,7 @@ namespace sg {
 	{
 	public:
 		using TypeShape = CHAR;
-		using TypeColor = DWORD;
+		using TypeColor = WORD;
 
 		//Color enumerate
 		enum EnumColor {

@@ -36,6 +36,15 @@
     <ClCompile Include="SnakeGame\src\Snake.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="SnakeGame\src\SysController.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="SnakeGame\src\SysClock.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="SnakeGame\src\SysInterface.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SnakeGame\head\SnakeGame.h">
@@ -60,6 +69,15 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="SnakeGame\head\Snake.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="SnakeGame\head\SysController.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="SnakeGame\head\SysClock.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="SnakeGame\head\SysInterface.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

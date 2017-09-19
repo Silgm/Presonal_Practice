@@ -30,15 +30,17 @@ namespace sg {
 		void setLength(TypeLength length);
 		TypeMoveDir getLength();
 
-		void move();
-		void growMove();
+		bool move();
+		bool growMove();
+
+		std::vector<CImagePoint> getImage();
 
 	private:
 		std::vector<CImagePoint> m_body;
 		TypeMoveDir	m_dir;
 		TypeLength	m_length;
 
-		void moveHead();
+		bool moveHead();
 		void moveBody();
 	};
 

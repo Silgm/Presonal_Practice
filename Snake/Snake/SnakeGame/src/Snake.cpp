@@ -1,5 +1,6 @@
 #include "Snake.h"
 
+#define DEFAULT_COLOR	CImagePoint::EnumColor::COLOR_LBGREEN
 
 namespace sg {
 	CSnake::CSnake(TypeCoordinate start_cx,
@@ -9,7 +10,7 @@ namespace sg {
 		: CGameElementObject(start_cx, start_cy), m_dir(start_dir), m_length(start_length)
 	{
 		////CImagePoint's coordinate is absolute.
-		CImagePoint head(start_cx, start_cy, '@', CImagePoint::EnumColor::COLOR_GREEN);
+		CImagePoint head(start_cx, start_cy, '@', DEFAULT_COLOR);
 		m_body.push_back(head);
 
 		//Create the body of Snake
@@ -17,35 +18,35 @@ namespace sg {
 		{
 		case DIR_UP:
 			for (int index = 1; index < (int)m_length; ++index) {
-				CImagePoint temp2(start_cx, start_cy - index, '*', CImagePoint::EnumColor::COLOR_GREEN);
+				CImagePoint temp2(start_cx, start_cy - index, '*', DEFAULT_COLOR);
 				m_body.push_back(temp2);
 			}
 			break;
 
 		case DIR_DOWN:
 			for (int index = 1; index < (int)m_length; ++index) {
-				CImagePoint temp2(start_cx, start_cy + index, '*', CImagePoint::EnumColor::COLOR_GREEN);
+				CImagePoint temp2(start_cx, start_cy + index, '*', DEFAULT_COLOR);
 				m_body.push_back(temp2);
 			}
 			break;
 
 		case DIR_LEFT:
 			for (int index = 1; index < (int)m_length; ++index) {
-				CImagePoint temp2(start_cx + index, start_cy, '*', CImagePoint::EnumColor::COLOR_GREEN);
+				CImagePoint temp2(start_cx + index, start_cy, '*', DEFAULT_COLOR);
 				m_body.push_back(temp2);
 			}
 			break;
 
 		case DIR_RIGHT:
 			for (int index = 1; index < (int)m_length; ++index) {
-				CImagePoint temp2(start_cx - index, start_cy, '*', CImagePoint::EnumColor::COLOR_GREEN);
+				CImagePoint temp2(start_cx - index, start_cy, '*', DEFAULT_COLOR);
 				m_body.push_back(temp2);
 			}
 			break;
 
 		default://the default case is DIR_LEFT
 			for (int index = 1; index < (int)m_length; ++index) {
-				CImagePoint temp2(start_cx - index, start_cy, '*', CImagePoint::EnumColor::COLOR_GREEN);
+				CImagePoint temp2(start_cx - index, start_cy, '*', DEFAULT_COLOR);
 				m_body.push_back(temp2);
 			}
 			break;
@@ -81,24 +82,35 @@ namespace sg {
 		return m_length;
 	}
 
-	void CSnake::move()
+	bool CSnake::move()
 	{
+		bool flag;
 		moveBody();
-		moveHead();
+		flag = moveHead();
+		return flag;
 	}
 
-	void CSnake::growMove()
+	bool CSnake::growMove()
 	{
-		CImagePoint temp(m_body[0].getCX(), m_body[0].getCY(), '*', CImagePoint::EnumColor::COLOR_GREEN);
+		bool flag;
+		CImagePoint temp(m_body[0].getCX(), m_body[0].getCY(), '*', DEFAULT_COLOR);
 
 		//Update the coordinate of Snake's head(A absolute coordinate in CGameElementObject)
-		moveHead();
+		flag = moveHead();
 
 		m_body.insert(m_body.begin() + 1, temp);
+		return flag;
 	}
 
-	void CSnake::moveHead()
+	std::vector<CImagePoint> CSnake::getImage()
 	{
+		return this->m_body;
+	}
+
+	bool CSnake::moveHead()
+	{
+		bool flag = true;
+
 		//Update the coordinate of Snake's head(A absolute coordinate in CGameElementObject)
 		switch (m_dir)
 		{
@@ -109,7 +121,6 @@ namespace sg {
 			moveUp();
 			//Move the ImagePoint's coordinate
 			m_body[0].moveUp();
-
 			break;
 
 		case DIR_DOWN:
@@ -143,6 +154,17 @@ namespace sg {
 			m_body[0].moveLeft();
 			break;
 		}
+
+		int counter = 0;
+		for (auto elm : m_body)
+		{
+			if (m_body[0].getCX() == elm.getCX() &&
+				m_body[0].getCY() == elm.getCY())
+				++counter;
+		}
+		if (counter > 1)
+			flag = false;
+		return flag;
 	}
 
 	void CSnake::moveBody()

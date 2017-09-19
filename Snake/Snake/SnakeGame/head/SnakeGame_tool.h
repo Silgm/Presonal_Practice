@@ -5,8 +5,10 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <thread>
 
 //C	std library
+#include <ctime>
 #include <cstdlib>
 #include <cstdint>
 #include <cstring>

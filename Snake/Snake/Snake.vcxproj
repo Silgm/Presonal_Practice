@@ -27,6 +27,9 @@
     <ClInclude Include="SnakeGame\head\SnakeGame.h" />
     <ClInclude Include="SnakeGame\head\SnakeGame_class.h" />
     <ClInclude Include="SnakeGame\head\SnakeGame_tool.h" />
+    <ClInclude Include="SnakeGame\head\SysClock.h" />
+    <ClInclude Include="SnakeGame\head\SysController.h" />
+    <ClInclude Include="SnakeGame\head\SysInterface.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SnakeGame\src\GameSystemObject.cpp" />
@@ -36,6 +39,9 @@
     <ClCompile Include="SnakeGame\src\Snake.cpp" />
     <ClCompile Include="SnakeGame\src\SnakeGame.cpp" />
     <ClCompile Include="SnakeGame\src\SnakeGameMain.cpp" />
+    <ClCompile Include="SnakeGame\src\SysClock.cpp" />
+    <ClCompile Include="SnakeGame\src\SysController.cpp" />
+    <ClCompile Include="SnakeGame\src\SysInterface.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
