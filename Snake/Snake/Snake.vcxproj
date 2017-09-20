@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="SnakeGame\head\Food.h" />
     <ClInclude Include="SnakeGame\head\GameElementObject.h" />
     <ClInclude Include="SnakeGame\head\GameObject.h" />
     <ClInclude Include="SnakeGame\head\GameSystemObject.h" />
@@ -30,8 +31,10 @@
     <ClInclude Include="SnakeGame\head\SysClock.h" />
     <ClInclude Include="SnakeGame\head\SysController.h" />
     <ClInclude Include="SnakeGame\head\SysInterface.h" />
+    <ClInclude Include="SnakeGame\head\Wall.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="SnakeGame\src\Food.cpp" />
     <ClCompile Include="SnakeGame\src\GameSystemObject.cpp" />
     <ClCompile Include="SnakeGame\src\ImagePoint.cpp" />
     <ClCompile Include="SnakeGame\src\GameElementObject.cpp" />
@@ -42,6 +45,7 @@
     <ClCompile Include="SnakeGame\src\SysClock.cpp" />
     <ClCompile Include="SnakeGame\src\SysController.cpp" />
     <ClCompile Include="SnakeGame\src\SysInterface.cpp" />
+    <ClCompile Include="SnakeGame\src\Wall.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>

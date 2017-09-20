@@ -28,6 +28,18 @@ namespace tool {
 			std::cout << data << '\t' << std::endl;
 		}
 	}
+
+	template<typename TYPE>
+	TYPE tool_random(TYPE start, TYPE end) {
+		static bool flag = true;
+		if (flag) {
+			srand(int(time(NULL)));
+			rand();
+			flag = false;
+		}
+		return (TYPE)(((rand() / (RAND_MAX + 1.0))*(end - start) + 0.5) + start);
+	}
+
 }
 
 

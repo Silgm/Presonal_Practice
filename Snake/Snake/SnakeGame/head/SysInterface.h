@@ -12,7 +12,7 @@ namespace sg {
 	public:
 		CSysInterface(CGameElementObject::TypeCoordinate width, CGameElementObject::TypeCoordinate height);
 		virtual ~CSysInterface();
-		void addImage(const std::vector<CImagePoint> &img);
+		bool addImage(const std::vector<CImagePoint> &img);
 		void clearBuff();
 		void render();
 	private:

@@ -32,6 +32,7 @@ namespace sg {
 
 		void moveRight();
 		void moveRight(TypeCoordinate length);
+
 	private:
 		TypeCoordinate m_cx;
 		TypeCoordinate m_cy;

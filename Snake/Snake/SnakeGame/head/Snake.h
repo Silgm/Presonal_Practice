@@ -39,7 +39,9 @@ namespace sg {
 		std::vector<CImagePoint> m_body;
 		TypeMoveDir	m_dir;
 		TypeLength	m_length;
-
+		const CImagePoint::TypeShape	cm_defaultHeadShape = 'O';
+		const CImagePoint::TypeShape	cm_defaultBodyShape = '*';
+		const CImagePoint::TypeColor	cm_defaultColor = CImagePoint::EnumColor::COLOR_LBGREEN;
 		bool moveHead();
 		void moveBody();
 	};

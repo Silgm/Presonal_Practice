@@ -8,6 +8,8 @@
 //Game Element Class
 #include "ImagePoint.h"
 #include "Snake.h"
+#include "Food.h"
+#include "Wall.h"
 
 //Game System Class
 #include "SysController.h"

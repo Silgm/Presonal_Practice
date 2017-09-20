@@ -1,7 +1,5 @@
 #include "Snake.h"
 
-#define DEFAULT_COLOR	CImagePoint::EnumColor::COLOR_LBGREEN
-
 namespace sg {
 	CSnake::CSnake(TypeCoordinate start_cx,
 		TypeCoordinate start_cy,
@@ -10,7 +8,7 @@ namespace sg {
 		: CGameElementObject(start_cx, start_cy), m_dir(start_dir), m_length(start_length)
 	{
 		////CImagePoint's coordinate is absolute.
-		CImagePoint head(start_cx, start_cy, '@', DEFAULT_COLOR);
+		CImagePoint head(start_cx, start_cy, cm_defaultHeadShape, cm_defaultColor);
 		m_body.push_back(head);
 
 		//Create the body of Snake
@@ -18,35 +16,35 @@ namespace sg {
 		{
 		case DIR_UP:
 			for (int index = 1; index < (int)m_length; ++index) {
-				CImagePoint temp2(start_cx, start_cy - index, '*', DEFAULT_COLOR);
+				CImagePoint temp2(start_cx, start_cy - index, cm_defaultBodyShape, cm_defaultColor);
 				m_body.push_back(temp2);
 			}
 			break;
 
 		case DIR_DOWN:
 			for (int index = 1; index < (int)m_length; ++index) {
-				CImagePoint temp2(start_cx, start_cy + index, '*', DEFAULT_COLOR);
+				CImagePoint temp2(start_cx, start_cy + index, cm_defaultBodyShape, cm_defaultColor);
 				m_body.push_back(temp2);
 			}
 			break;
 
 		case DIR_LEFT:
 			for (int index = 1; index < (int)m_length; ++index) {
-				CImagePoint temp2(start_cx + index, start_cy, '*', DEFAULT_COLOR);
+				CImagePoint temp2(start_cx + index, start_cy, cm_defaultBodyShape, cm_defaultColor);
 				m_body.push_back(temp2);
 			}
 			break;
 
 		case DIR_RIGHT:
 			for (int index = 1; index < (int)m_length; ++index) {
-				CImagePoint temp2(start_cx - index, start_cy, '*', DEFAULT_COLOR);
+				CImagePoint temp2(start_cx - index, start_cy, cm_defaultBodyShape, cm_defaultColor);
 				m_body.push_back(temp2);
 			}
 			break;
 
 		default://the default case is DIR_LEFT
 			for (int index = 1; index < (int)m_length; ++index) {
-				CImagePoint temp2(start_cx - index, start_cy, '*', DEFAULT_COLOR);
+				CImagePoint temp2(start_cx - index, start_cy, cm_defaultBodyShape, cm_defaultColor);
 				m_body.push_back(temp2);
 			}
 			break;
@@ -93,7 +91,7 @@ namespace sg {
 	bool CSnake::growMove()
 	{
 		bool flag;
-		CImagePoint temp(m_body[0].getCX(), m_body[0].getCY(), '*', DEFAULT_COLOR);
+		CImagePoint temp(m_body[0].getCX(), m_body[0].getCY(), cm_defaultBodyShape, cm_defaultColor);
 
 		//Update the coordinate of Snake's head(A absolute coordinate in CGameElementObject)
 		flag = moveHead();
