@@ -6,7 +6,6 @@ constexpr sg::CGameElementObject::TypeCoordinate SLEEP_TIME = 250;
 
 int score = 0;
 
-
 int sg::SnakeGame_Start(int args, char *argv[]) {
 	int newKey = 0, lastKey = 0;
 	int newCurtKey = 0, oldCurtKey = 0;
