@@ -4,6 +4,10 @@
 #include "CharLib.h"
 
 namespace gm {
+
+	class CMainApp;
+	/*指向类的非静态成员函数的指针*/
+
 	class CMainApp : cl::CLSysApp
 	{
 	public :
@@ -11,9 +15,11 @@ namespace gm {
 		CMainApp(int argc, char *argv[]);
 		virtual ~CMainApp();
 		void run();
-	private:
 
+	private:
 	};
+
+
 }
 
 #endif

@@ -46,6 +46,9 @@
 #include <climits>
 #include <cstring>
 
+#include <conio.h>
+#include <windows.h>
+
 namespace cl {
 
 }

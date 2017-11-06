@@ -20,13 +20,17 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CharLib\inc\CharLib.h" />
+    <ClInclude Include="CharLib\inc\CLSys.h" />
     <ClInclude Include="CharLib\inc\CLSysApp.h" />
     <ClInclude Include="CharLib\inc\CLObject.h" />
+    <ClInclude Include="CharLib\inc\CLSysCtrl.h" />
     <ClInclude Include="CharLib\inc\cl_tool.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CharLib\src\CLObject.cpp" />
+    <ClCompile Include="CharLib\src\CLSys.cpp" />
     <ClCompile Include="CharLib\src\CLSysApp.cpp" />
+    <ClCompile Include="CharLib\src\CLSysCtrl.cpp" />
     <ClCompile Include="CharLib\src\cl_tool.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
