@@ -10,6 +10,7 @@ namespace cl {
 		friend void thread_msg_event(CLSysCtrl *pCtrl);
 	public :
 		using msg_type = long;
+
 		typedef void(*event_type)();
 
 		CLSysCtrl();
@@ -23,7 +24,7 @@ namespace cl {
 		msg_type getMsg();
 
 	private:
-		bool m_listenStatus = true;
+		bool m_listenStatus = false;
 		event_type m_eventFunc = nullptr;
 		//线程间通信队列
 		std::queue<msg_type> m_msgQueue;

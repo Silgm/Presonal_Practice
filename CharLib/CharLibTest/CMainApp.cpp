@@ -16,10 +16,5 @@ namespace gm {
 	{
 	}
 
-	void CMainApp::run()
-	{
-		//Write Your Code Here:
-	}
-
 }
 

@@ -1,6 +1,6 @@
 #include "user_main.h"
 
-//gm::CMainApp	*mainApp;
+gm::CMainApp	*mainApp;
 cl::CLSysCtrl	ctrl;
 
 void event_msg()
@@ -12,16 +12,17 @@ void event_msg()
 
 int user_main(int argc, char * argv[])
 {
-	//mainApp = new gm::CMainApp(argc, argv);
+	mainApp = new gm::CMainApp(argc, argv);
 	
+	mainApp->setTitle(L"CharLib²âÊÔ");
+
 	ctrl.connect_event(event_msg);
 	ctrl.start_listen();
-	
 	Sleep(-1);
-	ctrl.stop_listen();
-	//mainApp->run();
 
-	//delete mainApp;
+	ctrl.stop_listen();
+
+	delete mainApp;
 
 	return EXIT_SUCCESS;
 }

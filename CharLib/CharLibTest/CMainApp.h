@@ -8,13 +8,12 @@ namespace gm {
 	class CMainApp;
 	/*指向类的非静态成员函数的指针*/
 
-	class CMainApp : cl::CLSysApp
+	class CMainApp : public cl::CLSysApp
 	{
 	public :
 		CMainApp();
 		CMainApp(int argc, char *argv[]);
 		virtual ~CMainApp();
-		void run();
 
 	private:
 	};

@@ -33,6 +33,9 @@
     <ClInclude Include="CharLib\inc\CLSysCtrl.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="CharLib\inc\CLElm.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CharLib\src\cl_tool.cpp">
@@ -48,6 +51,9 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="CharLib\src\CLSysCtrl.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="CharLib\src\CLElm.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

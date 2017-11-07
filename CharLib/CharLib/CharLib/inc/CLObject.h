@@ -9,6 +9,7 @@ namespace cl
 	{
 	public:
 		using char_type = wchar_t;
+		using str_type = std::wstring;
 		CLObject();
 		virtual ~CLObject();
 	private:

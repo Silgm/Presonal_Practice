@@ -15,6 +15,7 @@
 #include <vector>
 #include <deque>
 #include <string>
+#include <corecrt_wstring.h>
 
 #include <list>
 #include <forward_list>

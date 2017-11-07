@@ -12,11 +12,14 @@ namespace cl
 		CLSysApp();
 		CLSysApp(int argc, char **argv);
 		virtual ~CLSysApp();
-		virtual void run() = 0;
+
+		bool setTitle(str_type str);
 
 	private:
 		int	m_argc;
 		char **m_argv;
+
+		str_type m_title;
 	};
 
 }

@@ -8,6 +8,7 @@ namespace cl {
 	public:
 		CLSys();
 		virtual ~CLSys();
+
 	private:
 
 	};
