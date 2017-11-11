@@ -36,6 +36,15 @@
     <ClInclude Include="CharLib\inc\CLElm.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="CharLib\inc\CLImgPoint.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CharLib\inc\CLInterface.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CharLib\inc\CLSysTimer.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CharLib\src\cl_tool.cpp">
@@ -54,6 +63,15 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="CharLib\src\CLElm.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="CharLib\src\CLImgPoint.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="CharLib\src\CLInterface.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="CharLib\src\CLSysTimer.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

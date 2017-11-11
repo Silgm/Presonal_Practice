@@ -23,8 +23,8 @@ namespace cl {
 		CLElm(coord_type x, coord_type y);
 		virtual ~CLElm();
 
-		coord_type getCX();
-		coord_type getCY();
+		coord_type getCX() const;
+		coord_type getCY() const;
 
 		void setCX(coord_type x);
 		void setCY(coord_type y);

@@ -11,7 +11,8 @@ namespace cl {
 	public :
 		using msg_type = long;
 
-		typedef void(*event_type)();
+		//typedef void(*event_type)();
+		using event_type = std::function<void()>;
 
 		CLSysCtrl();
 		virtual ~CLSysCtrl();
@@ -25,7 +26,7 @@ namespace cl {
 
 	private:
 		bool m_listenStatus = false;
-		event_type m_eventFunc = nullptr;
+		event_type m_eventFunc;
 		//线程间通信队列
 		std::queue<msg_type> m_msgQueue;
 		std::mutex m_muQueue;

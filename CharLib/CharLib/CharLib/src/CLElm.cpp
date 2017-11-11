@@ -11,11 +11,11 @@ namespace cl {
 	CLElm::~CLElm()
 	{
 	}
-	CLElm::coord_type CLElm::getCX()
+	CLElm::coord_type CLElm::getCX() const
 	{
 		return this->m_x;
 	}
-	CLElm::coord_type CLElm::getCY()
+	CLElm::coord_type CLElm::getCY() const
 	{
 		return this->m_y;
 	}

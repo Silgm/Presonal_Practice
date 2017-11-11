@@ -3,6 +3,7 @@
 
 #include <thread>
 #include <mutex>
+#include <atomic> 
 
 #include <iostream>
 #include <sstream>
@@ -51,7 +52,9 @@
 #include <windows.h>
 
 namespace cl {
-
+#define THIS_THREAD_DELAY_S(s)		(std::this_thread::sleep_for(std::chrono::seconds(s)))
+#define THIS_THREAD_DELAY_MS(ms)	(std::this_thread::sleep_for(std::chrono::milliseconds(ms)))
+#define THIS_THREAD_DELAY_US(us)	(std::this_thread::sleep_for(std::chrono::microseconds(us)))
 }
 
 

@@ -9,30 +9,28 @@ namespace cl {
 
 	CLSysCtrl::~CLSysCtrl()
 	{
-
+		this->stop_listen();
 	}
 
 	void CLSysCtrl::start_listen()
 	{
+		this->m_listenStatus = true;
+
 		this->m_pListenThread = new std::thread(thread_msg_listen, this);
 		this->m_pEventThread = new std::thread(thread_msg_event, this);
-
-
-
-		this->m_listenStatus = true;
 	}
 
 	void CLSysCtrl::stop_listen()	
 	{
 		this->m_listenStatus = false;	//结束线程的循坏
-		if (this->m_pListenThread == nullptr)
+		if (this->m_pListenThread != nullptr && this->m_pListenThread->joinable())
 		{
 			this->m_pListenThread->join();
 			delete this->m_pListenThread;
 			this->m_pListenThread = nullptr;
 		}
 
-		if (this->m_pEventThread == nullptr)
+		if (this->m_pEventThread != nullptr && this->m_pEventThread->joinable())
 		{
 			this->m_pEventThread->join();
 			delete this->m_pEventThread;

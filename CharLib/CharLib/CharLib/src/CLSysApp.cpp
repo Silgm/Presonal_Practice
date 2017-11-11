@@ -22,6 +22,10 @@ namespace cl
 		this->m_title = str;
 		return SetConsoleTitleW(this->m_title.c_str());
 	}
+	void CLSysApp::setLocaleLanguage(std::string locale)
+	{
+		std::wcout.imbue(std::locale(locale));
+	}
 }
 
 

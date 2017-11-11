@@ -1,7 +1,7 @@
 #include "SnakeGame.h"
 
-constexpr sg::CGameElementObject::TypeCoordinate DEFAULT_X_WIDTH = 20;
-constexpr sg::CGameElementObject::TypeCoordinate DEFAULT_Y_WIDTH = 20;
+constexpr sg::CGameElementObject::TypeCoordinate DEFAULT_X_WIDTH = 15;
+constexpr sg::CGameElementObject::TypeCoordinate DEFAULT_Y_WIDTH = 15;
 constexpr sg::CGameElementObject::TypeCoordinate SLEEP_TIME = 250;
 
 int score = 0;

@@ -1,11 +1,11 @@
 #ifndef _CL_SYS_APP_H_
 #define _CL_SYS_APP_H_
-
 #include "CLSys.h"
 
 
 namespace cl 
 {
+
 	class CLSysApp : public CLSys
 	{
 	public:
@@ -14,7 +14,7 @@ namespace cl
 		virtual ~CLSysApp();
 
 		bool setTitle(str_type str);
-
+		void setLocaleLanguage(std::string locale);
 	private:
 		int	m_argc;
 		char **m_argv;

@@ -6,5 +6,8 @@
 #include "CLSys.h"
 #include "CLSysApp.h"
 #include "CLSysCtrl.h"
+#include "CLSysTimer.h"
+#include "CLImgPoint.h"
+#include "CLInterface.h"
 
 #endif
