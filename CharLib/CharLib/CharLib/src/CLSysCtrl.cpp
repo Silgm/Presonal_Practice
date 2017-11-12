@@ -4,12 +4,13 @@ namespace cl {
 
 	CLSysCtrl::CLSysCtrl()
 	{
-		this->m_listenStatus = true;
+		this->m_listenStatus = false;
 	}
 
 	CLSysCtrl::~CLSysCtrl()
 	{
-		this->stop_listen();
+		if (this->m_listenStatus)
+			this->stop_listen();
 	}
 
 	void CLSysCtrl::start_listen()
@@ -22,17 +23,23 @@ namespace cl {
 
 	void CLSysCtrl::stop_listen()	
 	{
+		std::unique_lock<std::mutex> loker(this->m_muListenStatus);
 		this->m_listenStatus = false;	//结束线程的循坏
-		if (this->m_pListenThread != nullptr && this->m_pListenThread->joinable())
+		loker.unlock();
+
+
+		if (this->m_pListenThread != nullptr)
 		{
-			this->m_pListenThread->join();
+			//if (this->m_pListenThread->joinable())
+				this->m_pListenThread->join();
 			delete this->m_pListenThread;
 			this->m_pListenThread = nullptr;
 		}
 
-		if (this->m_pEventThread != nullptr && this->m_pEventThread->joinable())
+		if (this->m_pEventThread != nullptr)
 		{
-			this->m_pEventThread->join();
+			//if (this->m_pEventThread->joinable())
+				this->m_pEventThread->join();
 			delete this->m_pEventThread;
 			this->m_pEventThread = nullptr;
 		}
@@ -60,30 +67,55 @@ namespace cl {
 
 	void thread_msg_listen(CLSysCtrl * pCtrl)
 	{
-		while (pCtrl->m_listenStatus)
+		while (true)
 		{
-			CLSysCtrl::msg_type data = _getch();
+			std::unique_lock<std::mutex> lokerListenStatus(pCtrl->m_muListenStatus);
+			if (pCtrl->m_listenStatus)
+			{
+				lokerListenStatus.unlock();
 
-			std::lock_guard<std::mutex> locker(pCtrl->m_muQueue);
-			pCtrl->m_msgQueue.push(data);
-			//locker.unlock();
+				CLSysCtrl::msg_type data = _getch();
+				std::unique_lock<std::mutex> locker(pCtrl->m_muQueue);
+				pCtrl->m_msgQueue.push(data);
+				locker.unlock();
 
-			pCtrl->m_condQueueReady.notify_one();//通过条件通知其他等待的线程
+				pCtrl->m_condQueueReady.notify_one();//通过条件通知其他等待的线程
+			}
+			else
+			{
+				lokerListenStatus.unlock();
+				return;
+			}
+
+
 		}
 	}
 
 	void thread_msg_event(CLSysCtrl * pCtrl)
 	{
-		while (pCtrl->m_listenStatus)
+		while (true)
 		{
-			std::unique_lock<std::mutex> locker(pCtrl->m_muQueue);
-			pCtrl->m_condQueueReady.wait(locker, [pCtrl]() -> bool {return !(pCtrl->m_msgQueue.empty()); });
-
-			//执行事件
-			if (pCtrl->m_eventFunc)
+			std::unique_lock<std::mutex> lokerListenStatus(pCtrl->m_muListenStatus);
+			if (pCtrl->m_listenStatus)
 			{
-				(pCtrl->m_eventFunc)();
+				lokerListenStatus.unlock();
+
+				std::unique_lock<std::mutex> locker(pCtrl->m_muQueue);
+				pCtrl->m_condQueueReady.wait(locker, [pCtrl]() -> bool {return !(pCtrl->m_msgQueue.empty()); });
+
+				//执行事件
+				if (pCtrl->m_eventFunc)
+				{
+					(pCtrl->m_eventFunc)();
+				}
 			}
+			else
+			{
+				lokerListenStatus.unlock();
+				return;
+			}
+
+
 		}
 	}
 }

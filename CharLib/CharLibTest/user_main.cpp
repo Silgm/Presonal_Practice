@@ -1,45 +1,71 @@
 #include "user_main.h"
 
-
-cl::CLSysCtrl	ctrl;
-std::atomic<bool> isExit = false;
-
-void event_msg()
-{
-	cl::CLSysCtrl::msg_type msg = ctrl.getMsg();
-	if (msg)
-	{
-		std::wcout << msg << L" " << std::endl;
-		if (msg == 27)
-			isExit = true;
-	}
-}
-
-
-void doSomething()
-{
-	static int cnt = 2000;
-	--cnt;
-	std::wcout << cnt << std::endl;
-	if (cnt < 1)
-		isExit = true;
-}
-
+using namespace cl;
+using namespace gm;
 int user_main(int argc, char * argv[])
 {
-	//cl::CLSysTimer timer, timer2;
-	//timer.setTimer(10, doSomething);
-	//timer.startTimer();
+	CMainApp	mainApp(argc, argv);
+	CLSysCtrl	ctrl;
+	CLSysTimer	fpsTimer;
 
-	//ctrl.connect_event(event_msg);
-	//ctrl.start_listen();
-	//while (1)
-	//{
-	//	THIS_THREAD_DELAY_S(1);
-	//	if (isExit)
-	//		break;
-	//}
-	//ctrl.stop_listen();
-	////timer.stopTimer();
+	CLImgPoint	ip(1, 1, L'¡ö', CLImgPoint::COLOR_BWHITE);
+	CLInterface world(0, 0, 20, 20);
+	std::condition_variable cvExit;
+	std::mutex mutexIsRun;
+
+	bool isRun = true;
+	
+	mainApp.setTitle(L"¶íÂÞË¹·½¿é");
+	mainApp.setLocaleLanguage("chs");
+
+	ctrl.connect_event([&]() -> void {
+		static bool inter = true;
+		CLSysCtrl::msg_type msg = ctrl.getMsg();
+
+		switch (msg)
+		{
+		case CLSysCtrl::KEY_UP:
+			ip.moveUp();
+			break;
+		case CLSysCtrl::KEY_DOWN:
+			ip.moveDown();
+			break;
+		case CLSysCtrl::KEY_LEFT:
+			ip.moveLeft();
+			break;
+		case CLSysCtrl::KEY_RIGHT:
+			ip.moveRight();
+			break;
+		case CLSysCtrl::KEY_ESC:
+			if (inter)
+			{
+				std::unique_lock<std::mutex> locker(mutexIsRun);
+				isRun = false;
+				locker.unlock();
+
+				inter = false;
+				cvExit.notify_one();
+			}
+			break;
+		default:
+			break;
+		}
+	});
+
+	fpsTimer.setTimer(30, [&]()->void {
+		world.addImgPoint(ip);
+		world.render();
+		world.clear();
+	});
+
+	ctrl.start_listen();
+	fpsTimer.startTimer();
+
+	std::unique_lock<std::mutex> locker(mutexIsRun);
+	cvExit.wait(locker, [&isRun]()->bool {return !isRun; });
+	fpsTimer.stopTimer();
+	ctrl.stop_listen();
+
+
 	return EXIT_SUCCESS;
 }

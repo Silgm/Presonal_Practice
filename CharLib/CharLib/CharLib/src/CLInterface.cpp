@@ -41,6 +41,7 @@ namespace cl {
 		{
 			size_t x = cx, y = cy;
 			((*(this->m_interface))[x][y]).setImgPoint(imgPoint.getImgPoint());
+			((*(this->m_interface))[x][y]).setImgColor(imgPoint.getImgColor());
 		}
 
 	}
@@ -60,6 +61,7 @@ namespace cl {
 			for (auto &elm : elmLine)
 			{
 				elm.setImgPoint(L' ');
+				elm.setImgColor(CLImgPoint::COLOR_GRAY);
 			}
 		}
 	}
@@ -68,10 +70,12 @@ namespace cl {
 	{
 		COORD position = {short(this->getCX()), short(this->getCY())};
 		SetConsoleCursorPosition(this->hCmd, position);
+		
 		for (const auto &elmLine : *m_interface)
 		{
 			for (const auto &elm : elmLine)
 			{
+				SetConsoleTextAttribute(this->hCmd, elm.getImgColor());
 				elm.show();
 				std::wcout << L' ';
 			}

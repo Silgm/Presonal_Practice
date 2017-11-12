@@ -28,9 +28,12 @@ namespace cl
 	void CLSysTimer::stopTimer()
 	{
 		this->m_timeIsRun = false;
-		if (this->m_threadTimer != nullptr && this->m_threadTimer->joinable())
+		if (this->m_threadTimer != nullptr)
 		{
-			this->m_threadTimer->join();
+			if (this->m_threadTimer->joinable())
+				this->m_threadTimer->join();
+			delete this->m_threadTimer;
+			this->m_threadTimer = nullptr;
 		}
 	}
 	void thread_func(CLSysTimer * timer)

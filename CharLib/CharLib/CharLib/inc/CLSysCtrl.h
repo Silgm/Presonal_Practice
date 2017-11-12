@@ -10,9 +10,16 @@ namespace cl {
 		friend void thread_msg_event(CLSysCtrl *pCtrl);
 	public :
 		using msg_type = long;
-
-		//typedef void(*event_type)();
 		using event_type = std::function<void()>;
+
+		enum enum_key
+		{
+			KEY_ESC = 27,
+			KEY_UP = 72,
+			KEY_DOWN = 80,
+			KEY_LEFT = 75,
+			KEY_RIGHT = 77
+		};
 
 		CLSysCtrl();
 		virtual ~CLSysCtrl();
@@ -30,6 +37,7 @@ namespace cl {
 		//线程间通信队列
 		std::queue<msg_type> m_msgQueue;
 		std::mutex m_muQueue;
+		std::mutex m_muListenStatus;
 		std::condition_variable m_condQueueReady;
 
 		std::thread *m_pListenThread = nullptr;

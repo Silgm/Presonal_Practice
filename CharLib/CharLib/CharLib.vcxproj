@@ -26,11 +26,13 @@
     <ClInclude Include="CharLib\inc\CLSys.h" />
     <ClInclude Include="CharLib\inc\CLSysApp.h" />
     <ClInclude Include="CharLib\inc\CLObject.h" />
+    <ClInclude Include="CharLib\inc\CLSysClock.h" />
     <ClInclude Include="CharLib\inc\CLSysCtrl.h" />
     <ClInclude Include="CharLib\inc\CLSysTimer.h" />
     <ClInclude Include="CharLib\inc\cl_tool.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="CharLib\src\CLSysClock.cpp" />
     <ClCompile Include="CharLib\src\CLElm.cpp" />
     <ClCompile Include="CharLib\src\CLImgPoint.cpp" />
     <ClCompile Include="CharLib\src\CLInterface.cpp" />

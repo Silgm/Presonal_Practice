@@ -136,6 +136,7 @@
     <ClCompile Include="user_main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CBlock.h" />
     <ClInclude Include="CMainApp.h" />
     <ClInclude Include="user_main.h" />
   </ItemGroup>

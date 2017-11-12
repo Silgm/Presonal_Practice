@@ -16,6 +16,10 @@ namespace cl
 	{
 
 	}
+	CLImgPoint::CLImgPoint(coord_type x, coord_type y, imgPoint_type img, enum_color clr)
+		: CLElm(x, y), m_img(img), m_color(clr)
+	{
+	}
 	CLImgPoint::~CLImgPoint()
 	{
 	}
@@ -23,9 +27,17 @@ namespace cl
 	{
 		this->m_img = img;
 	}
+	void CLImgPoint::setImgColor(enum_color clr)
+	{
+		this->m_color = clr;
+	}
 	CLImgPoint::imgPoint_type CLImgPoint::getImgPoint() const
 	{
 		return this->m_img;
+	}
+	CLImgPoint::enum_color CLImgPoint::getImgColor() const
+	{
+		return this->m_color;
 	}
 	void CLImgPoint::show() const
 	{
