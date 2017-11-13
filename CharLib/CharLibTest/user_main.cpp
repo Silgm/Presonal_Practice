@@ -2,6 +2,13 @@
 
 using namespace cl;
 using namespace gm;
+
+constexpr long WORLD_X = 25;
+constexpr long WORLD_Y = 4;
+
+constexpr long WORLD_WIDTH = 30;
+constexpr long WORLD_HEIGHT = 20;
+
 int user_main(int argc, char * argv[])
 {
 	CMainApp	mainApp(argc, argv);
@@ -9,14 +16,17 @@ int user_main(int argc, char * argv[])
 	CLSysTimer	fpsTimer;
 
 	CLImgPoint	ip(1, 1, L'¡ö', CLImgPoint::COLOR_BWHITE);
-	CLInterface world(0, 0, 20, 20);
+	CLInterface world(WORLD_X, WORLD_Y, WORLD_WIDTH, WORLD_HEIGHT, true);
 	std::condition_variable cvExit;
 	std::mutex mutexIsRun;
 
 	bool isRun = true;
-	
+
 	mainApp.setTitle(L"¶íÂÞË¹·½¿é");
 	mainApp.setLocaleLanguage("chs");
+	mainApp.setCursor(false);
+	mainApp.setCosoleSize(int(WORLD_HEIGHT * 1.5), WORLD_WIDTH * 4);
+
 
 	ctrl.connect_event([&]() -> void {
 		static bool inter = true;
@@ -25,16 +35,16 @@ int user_main(int argc, char * argv[])
 		switch (msg)
 		{
 		case CLSysCtrl::KEY_UP:
-			ip.moveUp();
+				ip.moveUp();
 			break;
 		case CLSysCtrl::KEY_DOWN:
-			ip.moveDown();
+				ip.moveDown();
 			break;
 		case CLSysCtrl::KEY_LEFT:
-			ip.moveLeft();
+				ip.moveLeft();
 			break;
 		case CLSysCtrl::KEY_RIGHT:
-			ip.moveRight();
+				ip.moveRight();
 			break;
 		case CLSysCtrl::KEY_ESC:
 			if (inter)
@@ -65,7 +75,6 @@ int user_main(int argc, char * argv[])
 	cvExit.wait(locker, [&isRun]()->bool {return !isRun; });
 	fpsTimer.stopTimer();
 	ctrl.stop_listen();
-
 
 	return EXIT_SUCCESS;
 }

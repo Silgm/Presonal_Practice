@@ -26,6 +26,19 @@ namespace cl
 	{
 		std::wcout.imbue(std::locale(locale));
 	}
+	void CLSysApp::setCursor(bool isShow, DWORD size)
+	{
+		CONSOLE_CURSOR_INFO curInfo = { size, isShow };
+		SetConsoleCursorInfo(GetStdHandle(STD_OUTPUT_HANDLE), &curInfo);
+	}
+
+	void CLSysApp::setCosoleSize(int line, int col)
+	{
+
+		std::string cmd = std::string("mode con cols=") + std::to_string(col) + " " + std::string("lines=") + std::to_string(line);
+		std::system(cmd.c_str());
+	}
+
 }
 
 
