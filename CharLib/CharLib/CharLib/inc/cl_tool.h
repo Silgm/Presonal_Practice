@@ -1,4 +1,4 @@
-﻿#ifndef _CL_TOOL_H_
+#ifndef _CL_TOOL_H_
 #define _CL_TOOL_H_
 
 #include <thread>

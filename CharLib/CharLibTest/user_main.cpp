@@ -3,11 +3,15 @@
 using namespace cl;
 using namespace gm;
 
+#define _WINDO
+
 constexpr long WORLD_X = 25;
 constexpr long WORLD_Y = 4;
 
 constexpr long WORLD_WIDTH = 30;
 constexpr long WORLD_HEIGHT = 20;
+
+
 
 int user_main(int argc, char * argv[])
 {
