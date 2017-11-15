@@ -26,7 +26,7 @@ int user_main(int argc, char * argv[])
 
 	bool isRun = true;
 
-	//设置标题
+	//设置标题 
 	mainApp.setTitle(L"俄罗斯方块");
 	mainApp.setLocaleLanguage("chs");
 	mainApp.setCursor(false);
