@@ -1,9 +1,11 @@
 #include "user_main.h"
 
+#include "CBlockManager.h"
+
 using namespace cl;
 using namespace gm;
 
-#define _WINDO
+//#define _WINDO
 
 constexpr long WORLD_X = 25;
 constexpr long WORLD_Y = 4;
@@ -11,27 +13,34 @@ constexpr long WORLD_Y = 4;
 constexpr long WORLD_WIDTH = 30;
 constexpr long WORLD_HEIGHT = 20;
 
-
+constexpr int GAME_SPEED = 500;
+constexpr int GAME_FSTIME = 50;
 
 int user_main(int argc, char * argv[])
 {
+	//以下是系统管理
 	CMainApp	mainApp(argc, argv);
 	CLSysCtrl	ctrl;
 	CLSysTimer	fpsTimer;
+	CLSysTimer	gameTimer;
 
-	CLImgPoint	ip(1, 1, L'■', CLImgPoint::COLOR_BWHITE);
 	CLInterface world(WORLD_X, WORLD_Y, WORLD_WIDTH, WORLD_HEIGHT, true);
 	std::condition_variable cvExit;
 	std::mutex mutexIsRun;
 
 	bool isRun = true;
+	//以上是系统管理
+
+	//以下是游戏元素
+	//CBlock	blockTest;
+	CBlockManager bm;
+	//以上是游戏元素
 
 	//设置标题 
 	mainApp.setTitle(L"俄罗斯方块");
-	mainApp.setLocaleLanguage("chs");
+	mainApp.setLocaleLanguage("");
 	mainApp.setCursor(false);
 	mainApp.setCosoleSize(int(WORLD_HEIGHT * 1.5), WORLD_WIDTH * 4);
-
 
 	ctrl.connect_event([&]() -> void {
 		static bool inter = true;
@@ -40,16 +49,19 @@ int user_main(int argc, char * argv[])
 		switch (msg)
 		{
 		case CLSysCtrl::KEY_UP:
-				ip.moveUp();
+
+			bm.changeActive();
 			break;
 		case CLSysCtrl::KEY_DOWN:
-				ip.moveDown();
+			bm.freezeActive();
 			break;
 		case CLSysCtrl::KEY_LEFT:
-				ip.moveLeft();
+
+			bm.moveLeftActive();
 			break;
 		case CLSysCtrl::KEY_RIGHT:
-				ip.moveRight();
+			bm.moveRightActive();
+
 			break;
 		case CLSysCtrl::KEY_ESC:
 			if (inter)
@@ -67,18 +79,26 @@ int user_main(int argc, char * argv[])
 		}
 	});
 
-	fpsTimer.setTimer(30, [&]()->void {
-		world.addImgPoint(ip);
+	fpsTimer.setTimer(GAME_FSTIME, [&]()->void {
+		bm.flash();
+		world.addImgPointGroup(bm.getImageGroup());
 		world.render();
 		world.clear();
 	});
 
+	gameTimer.setTimer(GAME_SPEED, [&]()->void {
+
+		bm.moveDropActive();
+	});
+
 	ctrl.start_listen();
 	fpsTimer.startTimer();
-
+	gameTimer.startTimer();
 	std::unique_lock<std::mutex> locker(mutexIsRun);
 	cvExit.wait(locker, [&isRun]()->bool {return !isRun; });
+
 	fpsTimer.stopTimer();
+	gameTimer.startTimer();
 	ctrl.stop_listen();
 
 	return EXIT_SUCCESS;

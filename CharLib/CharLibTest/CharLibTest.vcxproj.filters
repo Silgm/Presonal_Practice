@@ -24,6 +24,12 @@
     <ClCompile Include="CMainApp.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="CBlock.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="CBlockManager.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="user_main.h">
@@ -33,6 +39,9 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="CBlock.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CBlockManager.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

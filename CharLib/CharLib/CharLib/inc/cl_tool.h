@@ -55,6 +55,9 @@ namespace cl {
 #define THIS_THREAD_DELAY_S(s)		(std::this_thread::sleep_for(std::chrono::seconds(s)))
 #define THIS_THREAD_DELAY_MS(ms)	(std::this_thread::sleep_for(std::chrono::milliseconds(ms)))
 #define THIS_THREAD_DELAY_US(us)	(std::this_thread::sleep_for(std::chrono::microseconds(us)))
+	double random();	//返回一个0~1的随机实数
+	int random_int(int n);	//返回一个0~n-1的随机整数
+	int random_int(int start , int end);	//返回一个start~end-1的随机整数
 }
 
 

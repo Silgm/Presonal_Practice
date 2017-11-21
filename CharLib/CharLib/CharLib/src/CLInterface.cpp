@@ -82,6 +82,7 @@ namespace cl {
 	{
 		if (this->m_hasBound && !this->m_hasShowBound)
 		{
+			SetConsoleTextAttribute(this->hCmd, cl::CLImgPoint::COLOR_GRAY);
 			COORD positionBound = { SHORT(this->getCX() - 1), SHORT(this->getCY() - 1) };
 			//¥Ú”°…œ±ﬂΩÁ
 			for (; positionBound.X < SHORT((this->getCX() + 2*this->m_width )); ++positionBound.X)

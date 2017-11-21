@@ -4,7 +4,7 @@ namespace cl
 	CLSysApp::CLSysApp()
 		: m_argc(0), m_argv(nullptr)
 	{
-
+		std::wcout.imbue(std::locale(""));
 	}
 
 	CLSysApp::CLSysApp(int argc, char **argv)
