@@ -30,6 +30,9 @@
     <ClCompile Include="CBlockManager.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="CText.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="user_main.h">
@@ -42,6 +45,9 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="CBlockManager.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CText.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

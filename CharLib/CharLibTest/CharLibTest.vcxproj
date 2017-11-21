@@ -134,6 +134,7 @@
     <ClCompile Include="CBlock.cpp" />
     <ClCompile Include="CBlockManager.cpp" />
     <ClCompile Include="CMainApp.cpp" />
+    <ClCompile Include="CText.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="user_main.cpp" />
   </ItemGroup>
@@ -141,6 +142,7 @@
     <ClInclude Include="CBlock.h" />
     <ClInclude Include="CBlockManager.h" />
     <ClInclude Include="CMainApp.h" />
+    <ClInclude Include="CText.h" />
     <ClInclude Include="user_main.h" />
   </ItemGroup>
   <ItemGroup>
