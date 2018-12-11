@@ -18,40 +18,11 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="SnakeGame\head\Food.h" />
-    <ClInclude Include="SnakeGame\head\GameElementObject.h" />
-    <ClInclude Include="SnakeGame\head\GameObject.h" />
-    <ClInclude Include="SnakeGame\head\GameSystemObject.h" />
-    <ClInclude Include="SnakeGame\head\ImagePoint.h" />
-    <ClInclude Include="SnakeGame\head\Snake.h" />
-    <ClInclude Include="SnakeGame\head\SnakeGame.h" />
-    <ClInclude Include="SnakeGame\head\SnakeGame_class.h" />
-    <ClInclude Include="SnakeGame\head\SnakeGame_tool.h" />
-    <ClInclude Include="SnakeGame\head\SysClock.h" />
-    <ClInclude Include="SnakeGame\head\SysController.h" />
-    <ClInclude Include="SnakeGame\head\SysInterface.h" />
-    <ClInclude Include="SnakeGame\head\Wall.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="SnakeGame\src\Food.cpp" />
-    <ClCompile Include="SnakeGame\src\GameSystemObject.cpp" />
-    <ClCompile Include="SnakeGame\src\ImagePoint.cpp" />
-    <ClCompile Include="SnakeGame\src\GameElementObject.cpp" />
-    <ClCompile Include="SnakeGame\src\GameObject.cpp" />
-    <ClCompile Include="SnakeGame\src\Snake.cpp" />
-    <ClCompile Include="SnakeGame\src\SnakeGame.cpp" />
-    <ClCompile Include="SnakeGame\src\SnakeGameMain.cpp" />
-    <ClCompile Include="SnakeGame\src\SysClock.cpp" />
-    <ClCompile Include="SnakeGame\src\SysController.cpp" />
-    <ClCompile Include="SnakeGame\src\SysInterface.cpp" />
-    <ClCompile Include="SnakeGame\src\Wall.cpp" />
-  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{1120EC2F-6224-4052-A429-6D472DA10BC8}</ProjectGuid>
-    <RootNamespace>Snake</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
+    <ProjectGuid>{409FDD52-F5EB-420B-A4A8-AFDC08186956}</ProjectGuid>
+    <RootNamespace>AlgorithmPracticeC</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -59,7 +30,6 @@
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
-    <UseOfMfc>Static</UseOfMfc>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
@@ -67,7 +37,6 @@
     <PlatformToolset>v141</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>MultiByte</CharacterSet>
-    <UseOfMfc>Static</UseOfMfc>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
@@ -106,17 +75,22 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(ProjectDir)\SnakeGame\head;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <ConformanceMode>true</ConformanceMode>
     </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(ProjectDir)\SnakeGame\head;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <ConformanceMode>true</ConformanceMode>
     </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -125,12 +99,12 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(ProjectDir)\SnakeGame\head;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <ConformanceMode>true</ConformanceMode>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <SubSystem>Console</SubSystem>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -140,13 +114,23 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(ProjectDir)\SnakeGame\head;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <ConformanceMode>true</ConformanceMode>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <SubSystem>Console</SubSystem>
     </Link>
   </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="main.c" />
+    <ClCompile Include="tool.c" />
+    <ClCompile Include="user_main.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="tool.h" />
+    <ClInclude Include="user_main.h" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
